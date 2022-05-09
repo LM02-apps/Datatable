@@ -1,5 +1,5 @@
 <?php
- 
+
 /*
  * DataTables example server-side processing script.
  *
@@ -36,10 +36,7 @@ $primaryKey = 'id';
 // parameter represents the DataTables column identifier. In this case object
 // parameter names
 $columns = array(
-    array(
-        'db'        => 'birthdate',
-        'dt'        => 0,
-        'formatter' => function( $d, $row ) {
+    array('db' => 'birth_date','dt' => 0, 'formatter' => function( $d, $row ) {
             return date( 'jS M y', strtotime($d));
         }
     ),
@@ -65,8 +62,9 @@ $columns = array(
  * server-side, there is no need to edit below this line.
  */
  
-require( 'ssp.class.php' );
- 
+
+require( '../ssp.class.php' );
+
 echo json_encode(
     SSP::simple( $_POST, $sql_details, $table, $primaryKey, $columns )
 );
